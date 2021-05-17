@@ -31,8 +31,8 @@ defmodule PodJs do
     end
   end
 
-  defp to_script_name(script_path) do
-    p
+  defp to_script_name(path) do
+    path
     |> Path.split()
     |> Enum.reverse()
     |> Enum.take(2)
@@ -41,7 +41,7 @@ defmodule PodJs do
   end
 
   defp page_script_path(path) do
-    String.replace_trailing(".html.eex", ".js")
+    String.replace_trailing(path, ".html.eex", ".js")
   end
 
   defp every_script_path(path) do
