@@ -20,7 +20,21 @@ end
 In configuration of your phoenix app add:
 
 ```elixir
-config :phoenix, :template_engines, eex: PodJs
+config :phoenix, :template_engines, eex: PodJs.Kebab
+```
+
+or where you set your `use Phoenix.View` if you're in an umbrella app:
+
+```elixir
+  def view do
+    quote do
+      use Phoenix.View,
+        root: "lib/bar_web/templates",
+        pattern: "**/*",
+        namespace: BarWeb,
+        template_engines: [eex: PodJs.Kebab] # here
+    end
+  end
 ```
 
 In the webpack config add:
